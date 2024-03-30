@@ -14,9 +14,14 @@ impl Server {
 
         loop {
             match listener.accept() {
-                Ok(stream, _) => {
-                    let a = 5;
-                    println!("Ok");
+                Ok(mut stream, _) => {
+                    let mut buffer = [0; 2024];
+                    match stream.read(&mut buffer) {
+                        Ok(_) => {
+                            println!("Received a request: {}", String::from_utf8_lossy(&buffer));
+                        }
+                        Err(e) => println!("Failed to read from connectin: {}", e)
+                    }
                 },
                 Err(e) => println!("연결 실패 : {} ", e),
                 
