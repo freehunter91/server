@@ -31,7 +31,11 @@ WORKDIR /usr/local/bin
 COPY static ./static
 COPY dashboard_assets ./dashboard_assets
 
+# /app/data 디렉토리 생성
+RUN mkdir -p /app/data
+
 # Expose the port the server will listen on
+
 EXPOSE 8080
 
 # Set the command to run the server

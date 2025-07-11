@@ -17,7 +17,7 @@ function formatBytes(bytes, decimals = 2) {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
-const socket = new WebSocket(`ws://localhost:8080/ws`);
+const socket = new WebSocket(`wss://${window.location.host}/ws`);
 
 socket.onmessage = (event) => {
     const data = JSON.parse(event.data);

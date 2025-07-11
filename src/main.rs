@@ -51,7 +51,7 @@ struct StatusPayload {
 
 type ServerState = Arc<Mutex<AppState>>;
 
-const HISTORY_FILE: &str = "network_history.json";
+const HISTORY_FILE: &str = "/app/data/network_history.json";
 const HISTORY_RETENTION_DAYS: i64 = 30;
 
 async fn load_network_history() -> Vec<NetworkHistoryEntry> {
