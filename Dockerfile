@@ -1,5 +1,5 @@
 # Stage 1: Build the application
-FROM rust:1-slim as builder
+FROM docker.io/rust:bookworm as builder
 
 # Create a new empty shell project
 WORKDIR /usr/src/server
@@ -12,13 +12,19 @@ COPY src ./src
 
 # Build the application in release mode
 # This will cache dependencies
-RUN cargo build --release
+RUN cargo build --release --target=x86_64-unknown-linux-gnu
 
 # Stage 2: Create the final, minimal image
-FROM debian:buster-slim
+FROM debian:bookworm-slim  
 
 # Copy the compiled binary from the builder stage
-COPY --from=builder /usr/src/server/target/release/server /usr/local/bin/server
+COPY --from=builder /usr/src/server/target/x86_64-unknown-linux-gnu/release/server /usr/local/bin/server
+
+# Copy the configuration file
+COPY config.toml /usr/local/bin/config.toml
+
+# Create a directory for network history (if needed)
+RUN mkdir -p /usr/local/bin/data
 
 # Copy the static assets required by the server
 WORKDIR /usr/local/bin

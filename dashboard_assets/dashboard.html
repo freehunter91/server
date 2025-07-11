@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Server Status Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/dash/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <h1>Server Status Dashboard</h1>
@@ -28,6 +29,10 @@
             <li>No connections yet.</li>
         </ul>
     </div>
-    <script src="main.js"></script>
+    <div class="chart-container">
+        <h2>Daily Network Usage</h2>
+        <canvas id="networkChart"></canvas>
+    </div>
+    <script src="/dash/main.js"></script>
 </body>
 </html>
