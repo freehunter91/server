@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Status Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Server Status Dashboard</h1>
+    <div class="container">
+        <div class="metric">
+            <h2>CPU Usage</h2>
+            <p id="cpu-usage">N/A</p>
+        </div>
+        <div class="metric">
+            <h2>Memory Usage</h2>
+            <p id="memory-usage">N/A</p>
+        </div>
+        <div class="metric">
+            <h2>Network Usage (Sent)</h2>
+            <p id="network-usage">N/A</p>
+        </div>
+    </div>
+    <div class="ip-list">
+        <h2>Connected IPs</h2>
+        <ul id="ip-list">
+            <li>No connections yet.</li>
+        </ul>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
